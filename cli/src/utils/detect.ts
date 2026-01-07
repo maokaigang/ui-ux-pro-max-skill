@@ -34,6 +34,9 @@ export function detectAIType(cwd: string = process.cwd()): DetectionResult {
   if (existsSync(join(cwd, '.roo'))) {
     detected.push('roocode');
   }
+  if (existsSync(join(cwd, '.qoder'))) {
+    detected.push('qoder');
+  }
 
   // Suggest based on what's detected
   let suggested: AIType | null = null;
@@ -61,9 +64,11 @@ export function getAITypeDescription(aiType: AIType): string {
     case 'kiro':
       return 'Kiro (.kiro/steering/ + .shared/)';
     case 'codex':
-      return 'Codex (.codex/skills/ + .shared/)';
+      return 'Codex (.codex/skills/)';
     case 'roocode':
       return 'RooCode (.roo/commands/ + .shared/)';
+    case 'qoder':
+      return 'Qoder (.qoder/rules/ + .shared/)';
     case 'all':
       return 'All AI assistants';
   }

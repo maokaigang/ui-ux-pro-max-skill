@@ -1,6 +1,5 @@
 ---
-name: ui-ux-pro-max
-description: "UI/UX design intelligence. 50 styles, 21 palettes, 50 font pairings, 20 charts, 8 stacks (React, Next.js, Vue, Svelte, SwiftUI, React Native, Flutter, Tailwind). Actions: plan, build, create, design, implement, review, fix, improve, optimize, enhance, refactor, check UI/UX code. Projects: website, landing page, dashboard, admin panel, e-commerce, SaaS, portfolio, blog, mobile app, .html, .tsx, .vue, .svelte. Elements: button, modal, navbar, sidebar, card, table, form, chart. Styles: glassmorphism, claymorphism, minimalism, brutalism, neumorphism, bento grid, dark mode, responsive, skeuomorphism, flat design. Topics: color palette, accessibility, animation, layout, typography, font pairing, spacing, hover, shadow, gradient."
+trigger: always_on
 ---
 
 # UI/UX Pro Max - Design Intelligence
@@ -34,7 +33,7 @@ winget install Python.Python.3.12
 
 ---
 
-## How to Use This Skill
+## How to Use This Workflow
 
 When user requests UI/UX work (design, build, create, implement, review, fix, improve), follow this workflow:
 
@@ -51,7 +50,7 @@ Extract key information from user request:
 Use `search.py` multiple times to gather comprehensive information. Search until you have enough context.
 
 ```bash
-python3 .codex/scripts/search.py "<keyword>" --domain <domain> [-n <max_results>]
+python3 .shared/ui-ux-pro-max/scripts/search.py "<keyword>" --domain <domain> [-n <max_results>]
 ```
 
 **Recommended search order:**
@@ -70,7 +69,7 @@ python3 .codex/scripts/search.py "<keyword>" --domain <domain> [-n <max_results>
 If user doesn't specify a stack, **default to `html-tailwind`**.
 
 ```bash
-python3 .codex/scripts/search.py "<keyword>" --stack html-tailwind
+python3 .shared/ui-ux-pro-max/scripts/search.py "<keyword>" --stack html-tailwind
 ```
 
 Available stacks: `html-tailwind`, `react`, `nextjs`, `vue`, `svelte`, `swiftui`, `react-native`, `flutter`
@@ -109,32 +108,32 @@ Available stacks: `html-tailwind`, `react`, `nextjs`, `vue`, `svelte`, `swiftui`
 
 ## Example Workflow
 
-**User request:** "Làm landing page cho dịch vụ chăm sóc da chuyên nghiệp"
+**User request:** "Build a landing page for a skincare service"
 
 **AI should:**
 
 ```bash
 # 1. Search product type
-python3 .codex/scripts/search.py "beauty spa wellness service" --domain product
+python3 .shared/ui-ux-pro-max/scripts/search.py "beauty spa wellness service" --domain product
 
 # 2. Search style (based on industry: beauty, elegant)
-python3 .codex/scripts/search.py "elegant minimal soft" --domain style
+python3 .shared/ui-ux-pro-max/scripts/search.py "elegant minimal soft" --domain style
 
 # 3. Search typography
-python3 .codex/scripts/search.py "elegant luxury" --domain typography
+python3 .shared/ui-ux-pro-max/scripts/search.py "elegant luxury" --domain typography
 
 # 4. Search color palette
-python3 .codex/scripts/search.py "beauty spa wellness" --domain color
+python3 .shared/ui-ux-pro-max/scripts/search.py "beauty spa wellness" --domain color
 
 # 5. Search landing page structure
-python3 .codex/scripts/search.py "hero-centric social-proof" --domain landing
+python3 .shared/ui-ux-pro-max/scripts/search.py "hero-centric social-proof" --domain landing
 
 # 6. Search UX guidelines
-python3 .codex/scripts/search.py "animation" --domain ux
-python3 .codex/scripts/search.py "accessibility" --domain ux
+python3 .shared/ui-ux-pro-max/scripts/search.py "animation" --domain ux
+python3 .shared/ui-ux-pro-max/scripts/search.py "accessibility" --domain ux
 
 # 7. Search stack guidelines (default: html-tailwind)
-python3 .codex/scripts/search.py "layout responsive" --stack html-tailwind
+python3 .shared/ui-ux-pro-max/scripts/search.py "layout responsive" --stack html-tailwind
 ```
 
 **Then:** Synthesize all search results and implement the design.
@@ -164,7 +163,7 @@ These are frequently overlooked issues that make UI look unprofessional:
 
 | Rule | Do | Don't |
 |------|----|----- |
-| **No emoji icons** | Use SVG icons (Heroicons, Lucide, Simple Icons) | Use emojis like 🎨 🚀 ⚙️ as UI icons |
+| **No emoji icons** | Use SVG icons (Heroicons, Lucide, Simple Icons) | Use emojis like :art: :rocket: :gear: as UI icons |
 | **Stable hover states** | Use color/opacity transitions on hover | Use scale transforms that shift layout |
 | **Correct brand logos** | Research official SVG from Simple Icons | Guess or use incorrect logo paths |
 | **Consistent icon sizing** | Use fixed viewBox (24x24) with w-6 h-6 | Mix different icon sizes randomly |
@@ -203,3 +202,29 @@ Before delivering UI code, verify these items:
 ### Visual Quality
 - [ ] No emojis used as icons (use SVG instead)
 - [ ] All icons from consistent icon set (Heroicons/Lucide)
+- [ ] Brand logos are correct (verified from Simple Icons)
+- [ ] Hover states don't cause layout shift
+
+### Interaction
+- [ ] All clickable elements have `cursor-pointer`
+- [ ] Hover states provide clear visual feedback
+- [ ] Transitions are smooth (150-300ms)
+- [ ] Focus states visible for keyboard navigation
+
+### Light/Dark Mode
+- [ ] Light mode text has sufficient contrast (4.5:1 minimum)
+- [ ] Glass/transparent elements visible in light mode
+- [ ] Borders visible in both modes
+- [ ] Test both modes before delivery
+
+### Layout
+- [ ] Floating elements have proper spacing from edges
+- [ ] No content hidden behind fixed navbars
+- [ ] Responsive at 320px, 768px, 1024px, 1440px
+- [ ] No horizontal scroll on mobile
+
+### Accessibility
+- [ ] All images have alt text
+- [ ] Form inputs have labels
+- [ ] Color is not the only indicator
+- [ ] `prefers-reduced-motion` respected
